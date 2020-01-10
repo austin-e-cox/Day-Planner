@@ -1,0 +1,87 @@
+<!--Instructions
+Create a simple calendar application that allows the user to save events for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
+The app should display standard business hours (9 a.m. to 5 p.m.). Each time slot should represent one hour and contain the following:
+The time
+A field to hold user input
+A save button
+
+Clicking on the save button will store the time and user input in localStorage.
+Near the top of the calendar, the application should display the current day. Additionally, each hour should be color coded to reflect whether the time slot is in the past, the present, or the future. This will change depending on the time of day.
+You'll need to use the Moment.js library to work with date and time. Be sure to read the documentation carefully and concentrate on using Moment.js in the browser.
+
+Minimum Requirements:
+Functional, deployed application.
+GitHub repository with a unique name and a README describing project.
+The application displays timeblocks for standard business hours (9 a.m. to 5 p.m.).
+Each timeblock contains an input field and save button.
+Clicking a timeblock's "Save" button stores the input text in local storage, allowing the text to persist when the application is refreshed.
+The current day is displayed at the top of the calendar.
+Each timeblock is color coded to indicate whether it is in a past, present, or future hour.
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Day Planner</title>
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- moment time jscript -->
+    <script src="assets/moment.js"></script>
+    
+    <!-- Added a link to our external stylesheet-->
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <!-- Jumbotron for Title -->
+    <div class="jumbotron">
+        <h1 class="text-center">Workday Planner</h1>
+        <h3 class="text-center">Quick and dirty day planning</h3>
+        <br>
+        <h5 class="text-center" id="curDate"></h5>
+    </div>
+
+    <!-- application -->
+    <div class="container">
+        <div class="row" data-hour-block="1">
+            <div class="col-md-2 col-2 tar">
+                9AM
+            </div>
+            <div class="col-md-9 col-10">
+                <div class="input-group mb-3">
+                    <textarea data-text-block="1" class="form-control" rows="3" placeholder="Event description"></textarea>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary save" type="button">
+                            <img src="assets/images/save-24px.svg">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row" data-hour-block="2">
+            <div class="col-md-2 col-2 tar">
+                10AM
+            </div>
+            <div class="col-md-9 col-10">
+                <div class="input-group mb-3">
+                    <textarea data-text-block="2" class="form-control" rows="3" placeholder="Event description"></textarea>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary save" type="button">
+                            <img src="assets/images/save-24px.svg">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="assets/script.js"></script>
+</body>
+</html>
