@@ -1,5 +1,7 @@
 
 $( document ).ready(function() {
+    let prevTextArea = false;
+    let lastTextColor = false;
     // put current day
     let curMoment = moment();
     let curDate = curMoment.format('MMMM Do YYYY');
@@ -13,6 +15,29 @@ $( document ).ready(function() {
         }
     }
 
+    // blank currently selected text area
+    $("[data-text-block]").on("click",function(event){
+        // if clicked in text area
+        let t = event.target;
+        let dbNum = t.getAttribute("data-text-block");
+        if (dbNum === prevTextArea){
+
+        }
+        else{
+            if (prevTextArea && prevTextArea !== false){
+                deactivateTextArea(prevTextArea);
+            }
+            lastTextColor = $("[data-text-block="+dbNum+"]").css("backgroundColor");
+            prevTextArea = dbNum;
+            //$("[data-text-block="+dbNum+"]").css("backgroundColor","white");
+            $("[data-text-block="+dbNum+"]").animate({backgroundColor: "rgba(255, 255, 255, 0.25)"},500);
+        }
+    });
+
+    function deactivateTextArea(index){
+        $("[data-text-block="+index+"]").animate({backgroundColor: lastTextColor},500);
+    }
+    
     // set hour block colors according to before, during or after current hour
     let hourBlocks = $("[data-hour-block]");
     hourBlocks.each(function (i){
